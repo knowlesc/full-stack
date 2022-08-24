@@ -17,7 +17,7 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
-    "@prisma/client": "^2.23.0",
+    "@prisma/client": "^4.2.1",
     "next": "^10.0.0",
     "prop-types": "^15.7.2",
     "react": "^17.0.0",
@@ -33,6 +33,6 @@
     "eslint-plugin-react-hooks": "^4.2.0",
     "eslint-plugin-simple-import-sort": "^7.0.0",
     "prettier": "^2.2.1",
-    "prisma": "^2.23.0"
+    "prisma": "^4.2.1"
   }
 }
