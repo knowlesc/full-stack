@@ -4,6 +4,11 @@ import prisma from '../../lib/prisma';
 export const fetchPosts = () => {
   return prisma.post.findMany({
     include: { author: true },
+    orderBy: [
+      {
+        createdAt: 'desc',
+      },
+    ],
   });
 };
 
