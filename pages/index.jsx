@@ -25,16 +25,47 @@ const Journal = ({ posts }) => {
   return (
     <Layout>
       <h1>New Post</h1>
+
+      {/* TODO form should be in its own component */}
       <form onSubmit={submitForm}>
-        <label htmlFor="title">Title</label>
-        <input
-          name="title"
-          type="text"
-          onChange={(e) => setTitle(e.target.value)}
-        />
-        <label htmlFor="content">Content</label>
-        <textarea name="content" onChange={(e) => setContent(e.target.value)} />
-        <button type="submit">Submit</button>
+        <style jsx>{`
+          .field {
+            margin-top: 20px;
+            margin-bottom: 20px;
+          }
+
+          .field > label {
+            display: block;
+          }
+
+          .field > input,
+          .field > textarea {
+            width: 100%;
+          }
+        `}</style>
+
+        <div className="field">
+          <label htmlFor="title">Title</label>
+          <input
+            id="title"
+            name="title"
+            type="text"
+            onChange={(e) => setTitle(e.target.value)}
+          />
+        </div>
+
+        <div className="field">
+          <label htmlFor="content">Content</label>
+          <textarea
+            id="content"
+            name="content"
+            onChange={(e) => setContent(e.target.value)}
+          />
+        </div>
+
+        <div className="field">
+          <button type="submit">Submit</button>
+        </div>
       </form>
 
       <h1>Posts</h1>

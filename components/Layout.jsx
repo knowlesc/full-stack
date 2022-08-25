@@ -1,8 +1,12 @@
 import { Header } from './Header';
 import PropTypes from 'prop-types';
+import Head from 'next/head';
 
 export const Layout = ({ children }) => (
   <>
+    <Head>
+      <title>Hello Thinkific</title>
+    </Head>
     <Header />
     <div className="layout">{children}</div>
     <style jsx global>{`
@@ -11,6 +15,15 @@ export const Layout = ({ children }) => (
         font-size: 16px;
         font-family: Helvetica, Arial, sans-serif, 'Apple Color Emoji',
           'Segoe UI Emoji', 'Segoe UI Symbol';
+      }
+
+      html {
+        box-sizing: border-box;
+      }
+      *,
+      *:before,
+      *:after {
+        box-sizing: inherit;
       }
     `}</style>
     <style jsx>{`
