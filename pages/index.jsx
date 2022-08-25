@@ -11,7 +11,14 @@ const Journal = ({ posts }) => {
 
   const submitForm = async (e) => {
     e.preventDefault();
-    console.log('submit', title, content);
+
+    try {
+      // TODO validate form
+      await fetch('/api/posts', {
+        method: 'POST',
+        body: JSON.stringify({ title, content }),
+      });
+    } catch (e) {}
   };
 
   return (
