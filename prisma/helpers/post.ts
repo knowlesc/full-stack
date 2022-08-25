@@ -6,7 +6,7 @@ export const fetchPosts = () => {
   });
 };
 
-export const findPost = (id) => {
+export const findPost = (id: number) => {
   return prisma.post.findUnique({
     where: { id: Number(id) },
     include: { author: true },
