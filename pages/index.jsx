@@ -42,60 +42,68 @@ const Journal = ({ posts }) => {
 
   return (
     <Layout>
-      <h1>New Post</h1>
+      <style jsx>{`
+        section {
+          box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+          padding: 20px;
+          margin-bottom: 20px;
+          background-color: #fff;
+          border-radius: 10px;
+        }
 
-      {/* TODO form should be in its own component */}
-      <form onSubmit={submitForm}>
-        <style jsx>{`
-          .field {
-            margin-top: 20px;
-            margin-bottom: 20px;
-          }
+        .field {
+          margin-top: 20px;
+          margin-bottom: 20px;
+        }
 
-          .field > label {
-            display: block;
-          }
+        .field > label {
+          display: block;
+        }
 
-          .field > input,
-          .field > textarea {
-            width: 100%;
-          }
-        `}</style>
+        .field > input,
+        .field > textarea {
+          width: 100%;
+        }
+      `}</style>
+      <section>
+        <h1>New Post</h1>
 
-        <div className="field">
-          <label htmlFor="title">Title</label>
-          <input
-            id="title"
-            name="title"
-            type="text"
-            value={title}
-            onChange={(e) => setTitle(e.target.value)}
-            required
-          />
-        </div>
+        {/* TODO form should be in its own component */}
+        <form onSubmit={submitForm}>
+          <div className="field">
+            <label htmlFor="title">Title</label>
+            <input
+              id="title"
+              name="title"
+              type="text"
+              value={title}
+              onChange={(e) => setTitle(e.target.value)}
+              required
+            />
+          </div>
 
-        <div className="field">
-          <label htmlFor="content">Content</label>
-          <textarea
-            id="content"
-            name="content"
-            value={content}
-            onChange={(e) => setContent(e.target.value)}
-            required
-          />
-        </div>
+          <div className="field">
+            <label htmlFor="content">Content</label>
+            <textarea
+              id="content"
+              name="content"
+              value={content}
+              onChange={(e) => setContent(e.target.value)}
+              required
+            />
+          </div>
 
-        <div className="field">
-          <button type="submit" disabled={submitting}>
-            Submit
-          </button>
-        </div>
+          <div className="field">
+            <button type="submit" disabled={submitting}>
+              Submit
+            </button>
+          </div>
 
-        {success && <div role="alert">Post created successfully!</div>}
-        {error && <div role="alert">{error}</div>}
-      </form>
+          {success && <div role="alert">Post created successfully!</div>}
+          {error && <div role="alert">{error}</div>}
+        </form>
+      </section>
 
-      <h1>Posts</h1>
       {posts.map(({ id, title, content, createdAt }) => (
         <Post key={id} title={title} content={content} createdAt={createdAt} />
       ))}

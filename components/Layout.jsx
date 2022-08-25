@@ -13,6 +13,7 @@ export const Layout = ({ children }) => (
       body {
         margin: 0;
         font-size: 16px;
+        background-color: rgba(99, 99, 99, 0.1);
         font-family: Helvetica, Arial, sans-serif, 'Apple Color Emoji',
           'Segoe UI Emoji', 'Segoe UI Symbol';
       }
