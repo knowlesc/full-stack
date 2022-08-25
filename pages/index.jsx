@@ -5,13 +5,21 @@ import { Post } from '../components/Post';
 import { PostShape } from '../prop-shapes/post';
 import { fetchPosts } from '../prisma/helpers/post';
 import { useState } from 'react';
+import { useRouter } from 'next/router';
 
 const Journal = ({ posts }) => {
+  const [success, setSuccess] = useState(false);
+  const [error, setError] = useState('');
   const [title, setTitle] = useState('');
+  const [submitting, setSubmitting] = useState(false);
   const [content, setContent] = useState('');
+  const router = useRouter();
 
   const submitForm = async (e) => {
     e.preventDefault();
+    setSuccess(false);
+    setSubmitting(true);
+    setError('');
 
     try {
       // TODO validate form
@@ -19,7 +27,17 @@ const Journal = ({ posts }) => {
         method: 'POST',
         body: JSON.stringify({ title, content }),
       });
-    } catch (e) {}
+
+      // Refreshes post list
+      router.replace(router.asPath);
+      setSuccess(true);
+      setTitle('');
+      setContent('');
+      setSubmitting(false);
+    } catch (e) {
+      setError('Unable to create post.');
+      setSubmitting(false);
+    }
   };
 
   return (
@@ -50,7 +68,9 @@ const Journal = ({ posts }) => {
             id="title"
             name="title"
             type="text"
+            value={title}
             onChange={(e) => setTitle(e.target.value)}
+            required
           />
         </div>
 
@@ -59,13 +79,20 @@ const Journal = ({ posts }) => {
           <textarea
             id="content"
             name="content"
+            value={content}
             onChange={(e) => setContent(e.target.value)}
+            required
           />
         </div>
 
         <div className="field">
-          <button type="submit">Submit</button>
+          <button type="submit" disabled={submitting}>
+            Submit
+          </button>
         </div>
+
+        {success && <div role="alert">Post created successfully!</div>}
+        {error && <div role="alert">{error}</div>}
       </form>
 
       <h1>Posts</h1>
