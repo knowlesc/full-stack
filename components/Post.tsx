@@ -1,3 +1,5 @@
+import { SECONDARY_COLOR, FONT_COLOR_SECONDARY } from '../lib/styles';
+
 type Props = {
   title: string;
   content: string;
@@ -21,12 +23,21 @@ export function Post({ title, content, createdAt }: Props): JSX.Element {
           white-space: pre-line;
         }
 
+        h1 {
+          margin-bottom: -5px;
+        }
+
         hr {
-          border: 1px solid rgba(99, 99, 99, 0.2);
+          border: 2px solid ${SECONDARY_COLOR};
+        }
+
+        .date {
+          color: ${FONT_COLOR_SECONDARY};
+          font-size: 0.9em;
         }
       `}</style>
       <h1>{title}</h1>
-      <p>{date}</p>
+      <p className="date">{date}</p>
       <hr />
       <p className="preserve-format">{content}</p>
     </article>

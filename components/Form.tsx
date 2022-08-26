@@ -51,6 +51,8 @@ export function Form(): JSX.Element {
 
         .field > label {
           display: block;
+          font-weight: 700;
+          margin-bottom: 5px;
         }
 
         .field > input,
@@ -88,7 +90,7 @@ export function Form(): JSX.Element {
 
         <div className="field">
           <button type="submit" disabled={submitting}>
-            Submit
+            Create New Post
           </button>
         </div>
 
