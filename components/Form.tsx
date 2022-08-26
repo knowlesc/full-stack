@@ -1,9 +1,7 @@
 import { useState } from 'react';
 import { useRouter } from 'next/router';
 
-type Props = {};
-
-export function Form({}: Props): JSX.Element {
+export function Form(): JSX.Element {
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState('');
   const [title, setTitle] = useState('');

@@ -1,12 +1,23 @@
-import PropTypes from 'prop-types';
-
 import { Layout } from '../components/Layout';
 import { Post } from '../components/Post';
 import { Form } from '../components/Form';
-import { PostShape } from '../prop-shapes/post';
 import { fetchPosts } from '../prisma/helpers/post';
 
-const Journal = ({ posts }) => {
+type Props = {
+  posts: {
+    id: number;
+    title: string;
+    createdAt: string;
+    content?: string;
+    author: {
+      id: number;
+      email: string;
+      name: string;
+    };
+  }[];
+};
+
+export function Journal({ posts }: Props): JSX.Element {
   return (
     <Layout>
       <Form />
@@ -15,11 +26,7 @@ const Journal = ({ posts }) => {
       ))}
     </Layout>
   );
-};
-
-Journal.propTypes = {
-  posts: PropTypes.arrayOf(PostShape).isRequired,
-};
+}
 
 export const getServerSideProps = async () => {
   const posts = await fetchPosts();

@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 
-export const Header = () => {
+export function Header(): JSX.Element {
   const { pathname } = useRouter();
 
   const isActive = (path) => pathname === path;
@@ -20,4 +20,4 @@ export const Header = () => {
       `}</style>
     </nav>
   );
-};
+}
