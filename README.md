@@ -1,54 +1,6 @@
 # Thinkific Multi-User Journal Assignment
 
-## Getting Started
-
-### 1. Get to know project tech stack
-
-This simple project is a starting point for your take-home test. It is built with the following technologies:
-
-- [React](https://reactjs.org/), a JavaScript library for building user interfaces
-- [Next.js](https://nextjs.org/), a frontend framework for server-side rendering, easy routing, serverless RESTful API
-- [Prisma](https://www.prisma.io/), a database ORM for Node.js
-  - Scaffolding is set up for SQLite
-  - You are free to use other databases of your choice
-
-### 2. Install npm dependencies
-
-```
-yarn
-```
-
-### 3. Create .env file
-
-```
-cp .env.example .env
-```
-
-### 4. Prepare DB
-
-Create a local SQLite database and run migrations.
-
-```
-npx prisma migrate dev --name init
-```
-
-Seed the database with the sample data from [`prisma/seed.js`](./prisma/seed.js).
-
-```
-npx prisma db seed --preview-feature
-```
-
-### 5. Start the app
-
-```
-yarn dev
-```
-
-The app is now running, navigate to [`http://localhost:3000/`](http://localhost:3000/) in your browser to explore its UI.
-
 ## Submission
-
-Update this README file by answering the questions below.
 
 ### Date Or Reflection
 
@@ -62,9 +14,38 @@ You can also see and clone the project on GitHub if you want to view the commit 
 
 ### Instructions to run assignment locally
 
-Some technologies were changed slightly, see [DEV_LOG.md](doc/DEV_LOG.md).
+Some technologies were changed slightly from the boilerplate, see [DEV_LOG.md](doc/DEV_LOG.md).
 
-Everything should work with the same instructions as the boilerplate (see above), except you'll need postgres set up locally as I switched the DB provider to postgres. The .env file should point to your local postgres instance - I've updated the config example to match this.
+#### 1. Set up Postgres and config
+
+Install Postgres locally. Then copy the example .env file over, and ensure the postgres user and pass are correct and match your user that you set up. The default in the example file is user/pass, which probably won't match what you set up.
+
+```
+cp .env.example .env
+```
+
+#### 2. Install npm dependencies
+
+```
+yarn
+```
+
+This should also run `prisma generate` automatically via the `postinstall` script.
+
+#### 3. Migrate and seed database
+
+```
+npx prisma migrate dev --name init
+npx prisma db seed
+```
+
+#### 4. Start the app
+
+```
+yarn dev
+```
+
+The app is now running, navigate to [`http://localhost:3000/`](http://localhost:3000/) in your browser to explore its UI.
 
 ### Time spent
 
